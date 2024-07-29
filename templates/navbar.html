@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5E1748;">
+    <a class="navbar-brand logo" href="/" style="color: #F0DAD8; font-weight: bold; font-size: 23px;">E-commerce</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" style="color: #F0DAD8; font-weight: bold; font-size: 18px;" href="/product_list/">Find Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #F0DAD8; font-weight: bold; font-size: 18px;" href="/cart/">My Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #F0DAD8; font-weight: bold; font-size: 18px;" href="/my-orders/">Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #F0DAD8; font-weight: bold; font-size: 18px;" href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .order-detail {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .order-info {
+            margin-top: 20px;
+        }
+        .order-info h2 {
+            color: #333333;
+        }
+        .order-info p {
+            font-size: 18px;
+            color: #555555;
+        }
+        .ordered-items {
+            margin-top: 20px;
+        }
+        .ordered-items table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .ordered-items th, .ordered-items td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        .ordered-items th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="order-detail">
+            <h2>Order Details - #{{ order.id }}</h2>
+            <div class="order-info">
+                <p><strong>User:</strong> {{ order.user.username }}</p>
+                <p><strong>Total Price:</strong> ${{ total_price|floatformat:2 }}</p>
+                <p><strong>Status:</strong> {{ order.status }}</p>
+                <p><strong>Address:</strong> {{ order.address }}</p>
+                <p><strong>Phone Number:</strong> {{ order.phone_number }}</p>
+                <p><strong>Email:</strong> {{ order.email }}</p>
+                <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+                <p><strong>Date:</strong> {{ order.created_at|date:"F d, Y H:i" }}</p>
+            </div>
+            <div class="ordered-items">
+                <h3>Ordered Items</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detail in order_item_details %}
+                        <tr>
+                            <td>{{ detail.item.product.name }}</td>
+                            <td>${{ detail.item.product.price|floatformat:2 }}</td>
+                            <td>{{ detail.item.quantity }}</td>
+                            <td>${{ detail.total_price|floatformat:2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a href="{% url 'view_all_orders' %}" class="btn btn-secondary mt-3">Back to Orders</a>
+    </div>
+</body>
+</html>

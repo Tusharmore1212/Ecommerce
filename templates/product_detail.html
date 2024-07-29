@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            width: 50%;
+        }
+        .product-detail {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-detail img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .product-info {
+            margin-top: 5%;
+            margin-left: 20px;
+            max-width: 500px;
+        }
+        .product-info h1 {
+            font-size: 36px;
+            color: #333333;
+        }
+        .product-info p {
+            font-size: 18px;
+            color: #555555;
+        }
+        .product-info .price {
+            font-size: 24px;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+        .product-info form {
+            margin-top: 20px;
+        }
+        .product-info label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .product-info input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .product-info button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product-info button:hover {
+            background-color: #e65a50;
+        }
+        .navbar {
+            background-color: #F0DAD8;
+            margin-bottom: 4%;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #A95E59;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #A95E59;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="product-detail">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="product-info">
+                <h1>{{ product.name }}</h1>
+                <p>{{ product.description }}</p>
+                <p class="price"><strong>Price:</strong> {{ product.price }}</p>
+                {% if message_list %}
+                    {% for message in message_list %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                <form method="POST" action="{% url 'product_detail' product.id %}">
+                    {% csrf_token %}
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

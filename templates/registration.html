@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+</head>
+
+<body>
+    {% include "navbar.html" %}
+
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <h1>Create an Account</h1>
+            </div>
+
+            <div class="col-md-7 col-lg-6 ml-auto">
+                <form method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="first_name" placeholder="First Name" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="last_name" placeholder="Last Name" class="form-control bg-white border-left-0 border-md"required>
+                        </div>
+
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-phone-square text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="tel" name="phone_number" placeholder="Phone Number" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-home text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="address" placeholder="Address" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="password" name="password" placeholder="Password" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input type="password" name="password_confirmation" placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md" required>
+                        </div>
+
+                        <div class="form-group col-lg-12 mx-auto mb-0">
+                            <button type="submit" class="btn btn-primary btn-block py-2">
+                                <span class="font-weight-bold">Create your account</span>
+                            </button>
+                        </div>
+
+                        <div class="text-center w-100">
+                            <p class="text-muted font-weight-bold">Already Registered? <a href="{% url 'login2' %}" class="text-primary ml-2">Login</a></p>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

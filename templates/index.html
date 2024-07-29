@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/nav.css' %}"> {% endcomment %}
+    <style>
+      .book-image{
+           
+        height:200px;
+        object-fit:cover;
+    }
+        .navbar {
+            background-color: rgb(14, 85, 186);
+            margin-bottom : 4%;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+      {% comment %} <h1 class="my-4">Book List</h1> {% endcomment %}
+      <div class="row">
+          {% for p in products %}
+          <div class="col-md-3 mb-4">
+              <div class="card">
+                  <img class="card-img-top book-image" src="{{ p.image.url }}" alt="{{ book.name }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ p.name }}</h5>
+                    <p class="card-text"><strong>Price:</strong> {{ p.price }}</p>
+                </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+      {% for p in pro %}
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <img class="card-img-top book-image" src="{{ p.image.url }}" alt="{{ book.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-text"><strong>Price:</strong> {{ p.price }}</p>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+  </div>
+  <div class="row">
+    {% comment %} {% include "footer.html" %} {% endcomment %}
+</body>
+</html>

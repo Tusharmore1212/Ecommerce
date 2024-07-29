@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .book-image {
+            overflow: hidden;
+            width: 100%;
+            height: 200px;
+            display: block;
+            
+        }
+        .navbar {
+            background-color: #F0DAD8;
+            margin-bottom: 4%;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #A95E59;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #A95E59;
+        }
+        .card {
+            height: 400px;
+        }
+       
+        .btn-position {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem; 
+        }
+        .btn {
+            width: 80%; 
+            background-color:#F0DAD8;
+        }
+        .btn1 {
+            width: 100%; 
+            background-color:#F0DAD8;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <form method="GET" action="{% url 'product_list' %}">
+                    <div class="input-group">
+                        <select class="form-control" name="category">
+                            <option value="">Select category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.Category_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn1" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            {% for p in products %}
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img class="card-img-top book-image" src="{{ p.image.url }}" alt="{{ p.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.name }}</h5>
+                        <p class="card-text"><strong>Price:</strong> {{ p.price }}</p>
+                    </div>
+                    <a href="{% url 'product_detail' p.id %}" class="btn  btn-position">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+2024-07-22 13:16:34 0 [ERROR] InnoDB: The innodb_system data file 'ibdata1' must be writable
+2024-07-22 13:16:34 0 [ERROR] InnoDB: The innodb_system data file 'ibdata1' must be writable
+2024-07-22 13:16:34 0 [ERROR] Plugin 'InnoDB' init function returned error.
+2024-07-22 13:16:34 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+2024-07-22 13:16:34 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-07-22 13:16:34 0 [ERROR] Unknown/unsupported storage engine: InnoDB
+2024-07-22 13:16:34 0 [ERROR] Aborting
+Cannot find checkpoint record at LSN (1,0x5556)
+2024-07-23 11:15:28 0 [ERROR] mysqld: Aria recovery failed. Please run aria_chk -r on all Aria tables and delete all aria_log.######## files
+2024-07-23 11:15:28 0 [ERROR] Plugin 'Aria' init function returned error.
+2024-07-23 11:15:28 0 [ERROR] Plugin 'Aria' registration as a STORAGE ENGINE failed.
+2024-07-23 11:15:28 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2024-07-23 11:15:28 0 [Note] InnoDB: Uses event mutexes
+2024-07-23 11:15:28 0 [Note] InnoDB: Compressed tables use zlib 1.2.12
+2024-07-23 11:15:28 0 [Note] InnoDB: Number of pools: 1
+2024-07-23 11:15:28 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2024-07-23 11:15:28 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2024-07-23 11:15:28 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-07-23 11:15:28 0 [Note] InnoDB: Resizing redo log from 2*5242880 to 2*50331648 bytes; LSN=385634328
+2024-07-23 11:15:28 0 [Note] InnoDB: Starting to delete and rewrite log files.
+2024-07-23 11:15:28 0 [Note] InnoDB: Setting log file .\ib_logfile101 size to 50331648 bytes
+2024-07-23 11:15:28 0 [Note] InnoDB: Setting log file .\ib_logfile1 size to 50331648 bytes
+2024-07-23 11:15:28 0 [Note] InnoDB: Renaming log file .\ib_logfile101 to .\ib_logfile0
+2024-07-23 11:15:28 0 [Note] InnoDB: New log files created, LSN=385634328
+2024-07-23 11:15:28 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2024-07-23 11:15:28 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2024-07-23 11:15:28 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2024-07-23 11:15:28 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2024-07-23 11:15:28 0 [Note] InnoDB: Waiting for purge to start
+2024-07-23 11:15:28 0 [Note] InnoDB: 10.4.27 started; log sequence number 385634328; transaction id 94717
+2024-07-23 11:15:28 0 [Note] InnoDB: Loading buffer pool(s) from c:\xampp\mysql\data\ib_buffer_pool
+2024-07-23 11:15:28 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-07-23 11:15:28 0 [ERROR] Failed to initialize plugins.
+2024-07-23 11:15:28 0 [Note] InnoDB: Buffer pool(s) load completed at 240723 11:15:28
+2024-07-23 11:15:28 0 [ERROR] Aborting

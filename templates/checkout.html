@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #333333;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .table {
+            margin-bottom: 30px;
+        }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .form-group label {
+            color: #555555;
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-success {
+            width: 100%;
+            background-color: #28a745;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .font-weight-bold {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .navbar {
+            background-color: #F0DAD8;
+            margin-bottom: 4%;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #A95E59;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #A95E59;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2>Checkout</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p class="font-weight-bold">Total Price: {{ total_price }}</p>
+        <h3>Customer Details</h3>
+        <form id="checkout-form" method="POST" action="/checkout/">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_full_name">Full Name</label>
+                <input type="text" class="form-control" id="id_full_name" name="full_name" value="{{ customer.user.get_full_name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="id_address">Address</label>
+                <textarea class="form-control" id="id_address" name="address" rows="3" required>{{ customer.address }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_phone_number">Phone Number</label>
+                <input type="text" class="form-control" id="id_phone_number" name="phone_number" value="{{ customer.phone_number }}" required>
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                <input type="email" class="form-control" id="id_email" name="email" value="{{ customer.user.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="id_payment_method">Payment Method</label>
+                <select class="form-control" id="id_payment_method" name="payment_method" required>
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="upi">UPI Payment</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </form>
+    </div>
+</body>
+</html>
